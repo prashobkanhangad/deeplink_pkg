@@ -1,0 +1,25 @@
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+// Expose the app's Flutter extension to plugin projects (e.g. app_links) that expect 'flutter.compileSdkVersion'.
+// Must run before plugin build.gradle is evaluated; accessing :app.flutter triggers :app evaluation first.
+subprojects { subproject ->
+    if (subproject.name != "app") {
+        subproject.ext.set("flutter", rootProject.project(":app").flutter)
+    }
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}

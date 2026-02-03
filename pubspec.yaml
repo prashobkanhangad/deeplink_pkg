@@ -2,7 +2,7 @@ name: deeplink_sdk
 description: A complete SDK for deferred deep linking, attribution, and smart routing.
 version: 0.0.1
 homepage: https://deeplink.invyto.in
-repository: https://github.com/your-repo/deeplink_sdk
+repository: https://github.com/prashobkanhangad/deeplink_pkg
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
